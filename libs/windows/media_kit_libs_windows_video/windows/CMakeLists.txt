@@ -61,14 +61,14 @@ function(check_directory_exists_and_not_empty dir result_var)
 endfunction()
 
 # libmpv archive containing the pre-built shared libraries & headers.
-# set(LIBMPV "mpv-dev-x86_64-20230924-git-652a1dd.7z")
-set(LIBMPV "mpv-dev-x86_64-v3-20241108-git-edc082a.7z")
+# set(LIBMPV "mpv-dev-x86_64-v3-20241111-git-87a02ba.7z")
+set(LIBMPV "mpv-dev-x86_64-v3-20240930-git-4eff9ed.7z")
 
 # Download URL & MD5 hash of the libmpv archive.
-# set(LIBMPV_URL "https://github.com/media-kit/libmpv-win32-video-build/releases/download/2023-09-24/${LIBMPV}")
-# set(LIBMPV_MD5 "a832ef24b3a6ff97cd2560b5b9d04cd8")
-set(LIBMPV_URL "https://github.com/dyphire/mpv-winbuild/releases/download/mpv_own-2024-11-08/${LIBMPV}")
-set(LIBMPV_MD5 "0a463d4d15f085fbf416f434c31bbc44")
+# set(LIBMPV_URL "https://github.com/dyphire/mpv-winbuild/releases/download/mpv_own-2024-11-11/${LIBMPV}")
+# set(LIBMPV_MD5 "ffc62b671c228e5384f55146876cd516")
+set(LIBMPV_URL "https://github.com/dyphire/mpv-winbuild/releases/download/mpv_own-2024-09-30/${LIBMPV}")
+set(LIBMPV_MD5 "2c75a46c9f10bc8bc082e444dda631a6")
 
 # Download location of the libmpv archive.
 set(LIBMPV_ARCHIVE "${CMAKE_BINARY_DIR}/${LIBMPV}")
@@ -167,6 +167,7 @@ target_link_libraries(
 set(
   media_kit_libs_windows_video_bundled_libraries
   "${LIBMPV_SRC}/libmpv-2.dll"
+  "${LIBMPV_SRC}/lua51.dll"
   "${ANGLE_SRC}/api-ms-win-core-console-l1-1-0.dll"
   "${ANGLE_SRC}/api-ms-win-core-console-l1-2-0.dll"
   "${ANGLE_SRC}/api-ms-win-core-datetime-l1-1-0.dll"
