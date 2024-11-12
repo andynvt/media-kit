@@ -292,96 +292,73 @@ abstract class PlatformPlayer {
   }
 
   @protected
-  final StreamController<Playlist> playlistController =
-      StreamController<Playlist>.broadcast();
+  final StreamController<Playlist> playlistController = StreamController<Playlist>.broadcast();
 
   @protected
-  final StreamController<bool> playingController =
-      StreamController<bool>.broadcast();
+  final StreamController<bool> playingController = StreamController<bool>.broadcast();
 
   @protected
-  final StreamController<bool> completedController =
-      StreamController<bool>.broadcast();
+  final StreamController<bool> completedController = StreamController<bool>.broadcast();
 
   @protected
-  final StreamController<Duration> positionController =
-      StreamController<Duration>.broadcast();
+  final StreamController<Duration> positionController = StreamController<Duration>.broadcast();
 
   @protected
-  final StreamController<Duration> durationController =
-      StreamController.broadcast();
+  final StreamController<Duration> durationController = StreamController.broadcast();
 
   @protected
-  final StreamController<double> volumeController =
-      StreamController.broadcast();
+  final StreamController<double> volumeController = StreamController.broadcast();
 
   @protected
-  final StreamController<double> rateController =
-      StreamController<double>.broadcast();
+  final StreamController<double> rateController = StreamController<double>.broadcast();
 
   @protected
-  final StreamController<double> pitchController =
-      StreamController<double>.broadcast();
+  final StreamController<double> pitchController = StreamController<double>.broadcast();
 
   @protected
-  final StreamController<bool> bufferingController =
-      StreamController<bool>.broadcast();
+  final StreamController<bool> bufferingController = StreamController<bool>.broadcast();
 
   @protected
-  final StreamController<Duration> bufferController =
-      StreamController<Duration>.broadcast();
+  final StreamController<Duration> bufferController = StreamController<Duration>.broadcast();
 
   @protected
-  final StreamController<PlaylistMode> playlistModeController =
-      StreamController<PlaylistMode>.broadcast();
+  final StreamController<PlaylistMode> playlistModeController = StreamController<PlaylistMode>.broadcast();
 
   @protected
-  final StreamController<PlayerLog> logController =
-      StreamController<PlayerLog>.broadcast();
+  final StreamController<PlayerLog> logController = StreamController<PlayerLog>.broadcast();
 
   @protected
-  final StreamController<String> errorController =
-      StreamController<String>.broadcast();
+  final StreamController<String> errorController = StreamController<String>.broadcast();
 
   @protected
-  final StreamController<AudioParams> audioParamsController =
-      StreamController<AudioParams>.broadcast();
+  final StreamController<AudioParams> audioParamsController = StreamController<AudioParams>.broadcast();
 
   @protected
-  final StreamController<VideoParams> videoParamsController =
-      StreamController<VideoParams>.broadcast();
+  final StreamController<VideoParams> videoParamsController = StreamController<VideoParams>.broadcast();
 
   @protected
-  final StreamController<double?> audioBitrateController =
-      StreamController<double?>.broadcast();
+  final StreamController<double?> audioBitrateController = StreamController<double?>.broadcast();
 
   @protected
-  final StreamController<AudioDevice> audioDeviceController =
-      StreamController<AudioDevice>.broadcast();
+  final StreamController<AudioDevice> audioDeviceController = StreamController<AudioDevice>.broadcast();
 
   @protected
-  final StreamController<List<AudioDevice>> audioDevicesController =
-      StreamController<List<AudioDevice>>.broadcast();
+  final StreamController<List<AudioDevice>> audioDevicesController = StreamController<List<AudioDevice>>.broadcast();
 
   @protected
-  final StreamController<Track> trackController =
-      StreamController<Track>.broadcast();
+  final StreamController<Track> trackController = StreamController<Track>.broadcast();
 
   @protected
-  final StreamController<Tracks> tracksController =
-      StreamController<Tracks>.broadcast();
+  final StreamController<Tracks> tracksController = StreamController<Tracks>.broadcast();
 
   @protected
-  final StreamController<int?> widthController =
-      StreamController<int?>.broadcast();
+  final StreamController<int?> widthController = StreamController<int?>.broadcast();
 
   @protected
-  final StreamController<int?> heightController =
-      StreamController<int?>.broadcast();
+  final StreamController<int?> heightController = StreamController<int?>.broadcast();
 
   @protected
-  final StreamController<List<String>> subtitleController =
-      StreamController<List<String>>.broadcast();
+  final StreamController<List<String>> subtitleController = StreamController<List<String>>.broadcast();
 
   // --------------------------------------------------
 
@@ -470,6 +447,13 @@ class PlayerConfiguration {
   /// e.g. `assets/fonts/subtitle.ttf`
   final String? libassAndroidFont;
 
+  /// Font name of the `.ttf` font file to be used for [libass](https://github.com/libass/libass) based subtitle rendering on Android.
+  ///
+  /// e.g. `Droid Sans Fallback`
+  ///
+  /// NOTE: The font name is required, not the file name.
+  final String? libassAndroidFontName;
+
   /// Sets the log level on native backend.
   /// Default: `none`.
   final MPVLogLevel logLevel;
@@ -496,6 +480,7 @@ class PlayerConfiguration {
     this.muted = false,
     this.libass = false,
     this.libassAndroidFont,
+    this.libassAndroidFontName,
     this.logLevel = MPVLogLevel.error,
     this.bufferSize = 32 * 1024 * 1024,
     this.protocolWhitelist = const [
