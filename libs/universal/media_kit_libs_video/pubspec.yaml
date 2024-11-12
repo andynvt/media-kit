@@ -20,5 +20,3 @@ dependencies:
     path: ../../macos/media_kit_libs_macos_video
   media_kit_libs_windows_video:
     path: ../../windows/media_kit_libs_windows_video
-  media_kit_native_event_loop:
-    path: ../../../media_kit_native_event_loop
