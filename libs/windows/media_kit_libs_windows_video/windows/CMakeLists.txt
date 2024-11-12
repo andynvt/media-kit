@@ -12,6 +12,9 @@ option(MEDIA_KIT_LIBS_AVAILABLE "package:media_kit libraries are available." ON)
 set(PROJECT_NAME "media_kit_libs_windows_video")
 project(${PROJECT_NAME} LANGUAGES CXX)
 
+# Deal with MSVC incompatiblity
+add_compile_definitions(_DISABLE_CONSTEXPR_MUTEX_CONSTRUCTOR)
+
 # ------------------------------------------------------------------------------
 function(download_and_verify url md5 locationForArchive)
   # Check if the archive exists.
@@ -103,8 +106,8 @@ endif()
 set(ANGLE "ANGLE.7z")
 
 # Download URL & MD5 hash of the ANGLE archive.
-set(ANGLE_URL "https://github.com/alexmercerind/flutter-windows-ANGLE-OpenGL-ES/releases/download/v1.0.0/ANGLE.7z")
-set(ANGLE_MD5 "e5be38d0e1c5cbe5f70e53701ea8b6c9")
+set(ANGLE_URL "https://github.com/alexmercerind/flutter-windows-ANGLE-OpenGL-ES/releases/download/v1.0.1/ANGLE.7z")
+set(ANGLE_MD5 "e866f13e8d552348058afaafe869b1ed")
 
 # Download location of the ANGLE archive.
 set(ANGLE_ARCHIVE "${CMAKE_BINARY_DIR}/${ANGLE}")
@@ -213,23 +216,11 @@ set(
   "${ANGLE_SRC}/api-ms-win-downlevel-kernel32-l2-1-0.dll"
   "${ANGLE_SRC}/api-ms-win-eventing-provider-l1-1-0.dll"
   "${ANGLE_SRC}/concrt140.dll"
+
+  
   "${ANGLE_SRC}/d3dcompiler_47.dll"
-  "${ANGLE_SRC}/libc++.dll"
   "${ANGLE_SRC}/libEGL.dll"
   "${ANGLE_SRC}/libGLESv2.dll"
-  "${ANGLE_SRC}/msvcp140.dll"
-  "${ANGLE_SRC}/msvcp140_1.dll"
-  "${ANGLE_SRC}/msvcp140_2.dll"
-  "${ANGLE_SRC}/msvcp140_atomic_wait.dll"
-  "${ANGLE_SRC}/msvcp140_codecvt_ids.dll"
-  "${ANGLE_SRC}/ucrtbase.dll"
-  "${ANGLE_SRC}/ucrtbased.dll"
-  "${ANGLE_SRC}/vccorlib140.dll"
-  "${ANGLE_SRC}/vccorlib140d.dll"
-  "${ANGLE_SRC}/vcruntime140.dll"
-  "${ANGLE_SRC}/vcruntime140d.dll"
-  "${ANGLE_SRC}/vcruntime140_1.dll"
-  "${ANGLE_SRC}/vcruntime140_1d.dll"
   "${ANGLE_SRC}/vk_swiftshader.dll"
   "${ANGLE_SRC}/vulkan-1.dll"
   "${ANGLE_SRC}/zlib.dll"
